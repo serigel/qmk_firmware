@@ -27,7 +27,7 @@ enum custom_keycodes {
 };
 
 enum macro_keycodes {
-  SIMPLE_MACRO,
+  HEARTS,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, KC_MPLY, KC_VOLU,                       KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, KC_MNXT, KC_VOLD,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGBRST,\
+      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, KC_MNXT, KC_VOLD,                       HEARTS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGBRST,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_RALT,   LOWER,  KC_SPC,     KC_ENT,   RAISE, KC_LGUI \
                                       //`--------------------------'  `--------------------------'
@@ -211,6 +211,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           RGB_current_mode = rgblight_config.mode;
         } 
       #endif
+      break;
+    case HEARTS:
+      SEND_STRING("|WHITE|{|BLUE|{|RED|{")
       break;
   }
   return true;
